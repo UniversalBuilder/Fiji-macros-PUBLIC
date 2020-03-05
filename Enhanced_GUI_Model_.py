@@ -1,5 +1,6 @@
 from fiji.util.gui import GenericDialogPlus
 from java.awt.event   import ActionListener
+from ij import IJ, ImagePlus, WindowManager
 
 class ButtonClic(ActionListener):
     '''Class which unique function is to handle the button clics'''
@@ -20,11 +21,21 @@ class ButtonClic(ActionListener):
   
 # Create an instance of GenericDialogPlus
 gui = GenericDialogPlus("an enhanced GenericDialog")
- 
+
+# Add a logo
+current_dir = IJ.getDirectory('current')
+path = current_dir+"images\logo_cif.png"
+logo = ImagePlus(path)
+gui.addImage(logo)
+WindowManager.getCurrentImage().close()
+
+
 # Add possibility to choose some images already opened in Fiji
 gui.addImageChoice("Image1","Some description for image1")
 gui.addImageChoice("Image2","Some description for image2")
- 
+
+
+
  
 # The GenericDialogPlus also allows to select files, folder or both using a browse button
 gui.addFileField("Some_file path", "DefaultFilePath")
@@ -35,6 +46,7 @@ gui.addButton("A", ButtonClic() ) # We associate the button objects to some inst
 gui.addButton("B", ButtonClic() )
  
 gui.showDialog()
+
  
 # Recover the inputs in order of "appearance"
 if gui.wasOKed():
