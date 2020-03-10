@@ -27,7 +27,7 @@ current_dir = IJ.getDirectory('current')
 path = current_dir+"images\logo_cif.png"
 logo = ImagePlus(path)
 gui.addImage(logo)
-WindowManager.getCurrentImage().close()
+#WindowManager.getCurrentImage().close()
 
 
 # Add possibility to choose some images already opened in Fiji
