@@ -5,31 +5,35 @@
 #@ File (label ="Output folder: ", style="directory", description="This will be the output directory for your results") output_folder
 #@ String (visibility=MESSAGE, value="<html><p>Warning !<br> This script can take a long time to execute, be patient !</p></html>", required=false) msg3
 
+//Script written in beanshell solely because of the Weka functions calls (does not work as advertised with the IJ macro syntax)
+
 import trainableSegmentation.WekaSegmentation;
 import trainableSegmentation.utils.Utils;
 import ij.io.FileSaver;
 import ij.IJ;
 
+
+/*Split triple channel image and grab the channel of interest*/
 imp = IJ.getImage();
 image_name = imp.getTitle();
 imp.setTitle("original");
 IJ.run("Split Channels");
 IJ.selectWindow("C2-original");
 imp_c2 = IJ.getImage();
+
+/* Apply Weka classifer and get probabilities */
 IJ.run("Trainable Weka Segmentation");
-
 IJ.log("Loading model: "+model_location.getCanonicalPath());
-
 // create segmentator
 segmentator = new WekaSegmentation();
 // load classifier
 segmentator.loadClassifier( model_location.getCanonicalPath() );
 IJ.log("Model loaded");
 IJ.log("Generating probabilities...");
-
+// Create results
 result = segmentator.applyClassifier(imp_c2, 0, true);
 IJ.log("Probabilities generated !");
-
+//Save results
 new FileSaver( result ).saveAsTiff( output_folder.getPath() + File.separator + image_name + "_probabilities.tif" );
 
 // Cleaning
