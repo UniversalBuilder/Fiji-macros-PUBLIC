@@ -11,7 +11,8 @@ Yannick Krempp
 a folder of single channel fluorescent images of cells
 
 ## Description
-Simple example of processing a folder of single channel fluorescent images of cells, saving masks and results
+- Simple example of processing a folder of single channel fluorescent images of cells
+- Saves masks and results in the same input folder
 
 ## Related YouTube videos
 - N/A
