@@ -1,3 +1,5 @@
+//version 1.0.2 (27/09/2023)
+
 // Définir les noms des sous-dossiers
 subFolders = newArray("1_Raw_images", "2_Processed_images", "3_Results", "4_Scripts");
 
@@ -9,7 +11,7 @@ if(month < 10) {
 	strmonth = "0"+d2s(month,0);
 }
 else strmonth = d2s(month,0);
-currentdate = d2s(year,0)+ "-" + strmonth + "-" + d2s(dayOfMonth,0);
+currentdate = d2s(year,0)+ "." + strmonth + "." + d2s(dayOfMonth,0);
 
 
 // Construire un dialogue pour demander les informations du client et du projet
@@ -17,7 +19,7 @@ Dialog.create("Info about the user and the project");
 Dialog.addString("User first name: ", "");
 Dialog.addString("User last name :", "");
 Dialog.addString("Project date (aaaa.mm.jj): ", currentdate);
-Dialog.addChoice("Project type: ", newArray("Imaris", "Fiji", "QuPath", "CellProfiler", "Multi", "Autre", "HRM-Huygens"), "Imaris");
+Dialog.addChoice("Project type: ", newArray("IMARIS", "FIJI", "QUPATH", "CELLPROFILER", "MULTI", "OTHER", "HRM-HUYGENS"), "IMARIS");
 Dialog.show();
 
 
@@ -31,7 +33,7 @@ if (nom!="" && prenom!="" && date!="") {
 
   // Construire le nom du dossier principal à partir des informations
   //mainFolder = type + "_" + prenom + "_" + nom + "_" + date;
-  mainFolder = date + "_" + prenom + "_" + nom + "_" + type;
+  mainFolder = date + "-" + prenom + "_" + nom + "_" + type;
 
   // Demander à l'utilisateur de choisir l'emplacement du dossier principal
  
