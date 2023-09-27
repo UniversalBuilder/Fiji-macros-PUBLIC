@@ -1,7 +1,7 @@
-//version 1.0.2 (27/09/2023)
+//version 1.0.3 (27/09/2023)
 
 // Définir les noms des sous-dossiers
-subFolders = newArray("1_Raw_images", "2_Processed_images", "3_Results", "4_Scripts");
+subFolders = newArray("0_Project_description", "1_Raw_images", "2_Processed_images", "3_Results", "4_Scripts");
 
 // get current date as a string in the dd-mm-yyyy format
 getDateAndTime(year, month, dayOfWeek, dayOfMonth, hour, minute, second, msec);
