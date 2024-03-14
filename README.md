@@ -1,7 +1,5 @@
 # Fiji-macros-PUBLIC
  
-This repository conatins Some useful macros developped at the CIF, and that can be shared with the public.
+This repository contains several macros developped at the CIF that can be shared with the public.
 
-# TODO
 
-Reorganize folders and add proper .md files for each macro
